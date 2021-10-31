@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hazelcast
+  namespace: staging
+  labels:
+    app: hazelcast
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hazelcast
+  template:
+    metadata:
+      labels:
+        app: hazelcast
+    spec:
+      containers:
+      - name: hazelcast
+        image: hazelcast/hazelcast:3.12
+        ports:
+        - containerPort: 5701
